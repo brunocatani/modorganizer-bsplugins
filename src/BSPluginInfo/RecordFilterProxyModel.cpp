@@ -21,8 +21,9 @@ void RecordFilterProxyModel::setFile(const QString& pluginName)
 
 void RecordFilterProxyModel::setFilterFlags(FilterFlags filterFlags)
 {
+  beginFilterChange();
   m_FilterFlags = filterFlags;
-  invalidateRowsFilter();
+  endFilterChange(Direction::Rows);
 }
 
 void RecordFilterProxyModel::setSourceModel(QAbstractItemModel* sourceModel)
@@ -46,7 +47,8 @@ void RecordFilterProxyModel::setSourceModel(QAbstractItemModel* sourceModel)
 void RecordFilterProxyModel::onSourceDataChanged()
 {
   if (dynamicSortFilter()) {
-    invalidateRowsFilter();
+    beginFilterChange();
+    endFilterChange(Direction::Rows);
   }
 }
 

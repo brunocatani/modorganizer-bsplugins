@@ -18,7 +18,7 @@ FetchContent_Declare(
 	ryml
 	EXCLUDE_FROM_ALL
 	GIT_REPOSITORY https://github.com/biojppm/rapidyaml.git
-	GIT_TAG master
+	GIT_TAG 5beabada4a52746c9c4f86dd3993bc6098ebf700
 )
 
 FetchContent_MakeAvailable(ryml)

@@ -8,8 +8,9 @@ namespace BSPluginList
 
 void PluginSortFilterProxyModel::hideForceEnabledFiles(bool doHide)
 {
+  beginFilterChange();
   m_HideForceEnabledFiles = doHide;
-  invalidateRowsFilter();
+  endFilterChange(Direction::Rows);
 }
 
 bool PluginSortFilterProxyModel::filterMatchesPlugin(const QString& plugin) const
@@ -115,8 +116,9 @@ bool PluginSortFilterProxyModel::lessThan(const QModelIndex& source_left,
 
 void PluginSortFilterProxyModel::updateFilter(const QString& filter)
 {
+  beginFilterChange();
   m_CurrentFilter = filter;
-  invalidateRowsFilter();
+  endFilterChange(Direction::Rows);
 }
 
 }  // namespace BSPluginList
